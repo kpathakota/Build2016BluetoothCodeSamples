@@ -8,10 +8,10 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SDKTemplate</RootNamespace>
-    <AssemblyName>BluetoothInAppGATT</AssemblyName>
+    <AssemblyName>BluetoothRfcommChat</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.14267.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -91,20 +91,20 @@
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\SharedContent\cs\App.xaml.cs">
+    <Compile Include="..\..\SharedContent\cs\App.xaml.cs">
       <Link>App.xaml.cs</Link>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\..\..\SharedContent\cs\MainPage.xaml.cs">
+    <Compile Include="..\..\SharedContent\cs\MainPage.xaml.cs">
       <Link>MainPage.xaml.cs</Link>
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\..\..\SharedContent\cs\AssemblyInfo.cs">
+    <Compile Include="..\..\SharedContent\cs\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="SampleConfiguration.cs" />
-    <Compile Include="Scenario1_InAppGATT.xaml.cs">
-      <DependentUpon>Scenario1_InAppGATT.xaml</DependentUpon>
+    <Compile Include="Scenario1_BeaconProximity.xaml.cs">
+      <DependentUpon>Scenario1_BeaconProximity.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -113,64 +113,63 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="..\..\..\SharedContent\xaml\App.xaml">
+    <ApplicationDefinition Include="..\..\SharedContent\xaml\App.xaml">
       <Link>App.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="..\..\..\SharedContent\cs\MainPage.xaml">
+    <Page Include="..\..\SharedContent\cs\MainPage.xaml">
       <Link>MainPage.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Scenario1_InAppGATT.xaml">
+    <Page Include="Scenario1_BeaconProximity.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="..\..\..\SharedContent\xaml\Styles.xaml">
+    <Page Include="..\..\SharedContent\xaml\Styles.xaml">
       <Link>Styles\Styles.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="InAppGatt.snk" />
+    <ProjectReference Include="Tasks\BackgroundTasks.csproj">
+      <Project>{13331b5b-97d7-4290-a230-67baeae415c5}</Project>
+      <Name>BackgroundTasks</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\SharedContent\media\microsoft-sdk.png">
+    <Content Include="..\..\SharedContent\media\microsoft-sdk.png">
       <Link>Assets\microsoft-sdk.png</Link>
     </Content>
-    <Content Include="..\..\..\SharedContent\media\placeholder-sdk.png">
+    <Content Include="..\..\SharedContent\media\placeholder-sdk.png">
       <Link>Assets\placeholder-sdk.png</Link>
     </Content>
-    <Content Include="..\..\..\SharedContent\media\smalltile-sdk.png">
+    <Content Include="..\..\SharedContent\media\smalltile-sdk.png">
       <Link>Assets\smalltile-sdk.png</Link>
     </Content>
-    <Content Include="..\..\..\SharedContent\media\splash-sdk.png">
+    <Content Include="..\..\SharedContent\media\splash-sdk.png">
       <Link>Assets\splash-sdk.png</Link>
     </Content>
-    <Content Include="..\..\..\SharedContent\media\squaretile-sdk.png">
+    <Content Include="..\..\SharedContent\media\squaretile-sdk.png">
       <Link>Assets\squaretile-sdk.png</Link>
     </Content>
-    <Content Include="..\..\..\SharedContent\media\storelogo-sdk.png">
+    <Content Include="..\..\SharedContent\media\storelogo-sdk.png">
       <Link>Assets\storelogo-sdk.png</Link>
     </Content>
-    <Content Include="..\..\..\SharedContent\media\tile-sdk.png">
+    <Content Include="..\..\SharedContent\media\tile-sdk.png">
       <Link>Assets\tile-sdk.png</Link>
     </Content>
-    <Content Include="..\..\..\SharedContent\media\windows-sdk.png">
+    <Content Include="..\..\SharedContent\media\windows-sdk.png">
       <Link>Assets\windows-sdk.png</Link>
     </Content>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>InAppGatt.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
