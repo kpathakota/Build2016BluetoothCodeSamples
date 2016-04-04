@@ -1,0 +1,61 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// This code is licensed under the MIT License (MIT).
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page
+    x:Class="SDKTemplate.Scenario1_BeaconProximity"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="RootGrid" Margin="12,20,12,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <ScrollViewer Grid.Row="0" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,15,0">
+                            <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap" Text="Request access to device so we can read and write to it in the background."/>
+                            <Button x:Name="ConnectButton_Copy" 
+                            	HorizontalAlignment="Stretch" 
+                            	VerticalAlignment="Stretch"
+                            	Content="Get Permission to Device" 
+                            	Margin="1" 
+                            	VariableSizedWrapGrid.ColumnSpan="2" 
+                            	Click="RequestButton_Click"/>
+                            <TextBlock Margin="0,20,0,0" Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap" Text="Control the state of the background task."/>
+                            <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="60">
+                                <Button x:Name="RunButton" HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch"
+                                        Content="Start BG Task" 
+                                        Margin="1" 
+                                        VariableSizedWrapGrid.ColumnSpan="2" 
+                                        Click="RunButton_Click"/>
+                                <Button x:Name="StopButton" 
+                                        HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch"
+                                        Content="Stop BG Task" 
+                                        Margin="1" 
+                                        VariableSizedWrapGrid.ColumnSpan="2" 
+                                        Click="StopButton_Click"/>
+                            </VariableSizedWrapGrid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>

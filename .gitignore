@@ -1,0 +1,22 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.suo
+/BuildBeacons/BluetoothBeyondBeacons/cs/bin/ARM/Debug
+/BuildBeacons/BluetoothBeyondBeacons/cs/obj/ARM/Debug
+/BuildBeacons/BluetoothBeyondBeacons/cs/Tasks/bin/ARM/Debug
+/BuildBeacons/BluetoothBeyondBeacons/cs/Tasks/obj/ARM/Debug
+*.user
+/BuildInAppGATT/BluetoothInAppGATT/cs/bin/ARM/Debug
+/BuildInAppGATT/BluetoothInAppGATT/cs/bin/x64/Debug/AppX/entrypoint
+/BuildInAppGATT/BluetoothInAppGATT/cs/bin/x64/Debug
+/BuildInAppGATT/BluetoothInAppGATT/cs/obj
+/BuildQuickStart/BtAvatar/BtAvatar/BtAvatar/bin/x64/Debug
+/BuildQuickStart/BtAvatar/BtAvatar/BtAvatar/obj
+/BuildQuickStart/BtSensor/.vs/config
+/BuildQuickStart/BtSensor/AvatarSensor/bin/ARM/Debug
+/BuildQuickStart/BtSensor/AvatarSensor/obj/ARM/Debug
+*.htm
+*.snk
+*.json

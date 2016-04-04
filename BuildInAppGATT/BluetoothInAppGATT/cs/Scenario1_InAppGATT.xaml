@@ -1,0 +1,151 @@
+<!--
+//*********************************************************
+//
+// Copyright (c) Microsoft. All rights reserved.
+// This code is licensed under the MIT License (MIT).
+// THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+// IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+// PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+-->
+<Page
+    x:Class="SDKTemplate.Scenario1_InAppGATT"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SDKTemplate"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <local:GeneralPropertyValueConverter x:Key="generalPropertyValueConverter"/>
+        <CollectionViewSource x:Name="cvs" />
+        <DataTemplate x:Key="ResultsListViewTemplate">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" MinWidth="100"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" Height="40" Width="40" Margin="5" VerticalAlignment="Top">
+                    <Image Source="{Binding Path=GlyphBitmapImage}"
+                           Stretch="UniformToFill"/>
+                </Border>
+                <Border Grid.Column="1" Margin="5">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Name:" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" TextWrapping="WrapWholeWords"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Bluetooth Address:" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Path=Properties, Converter={StaticResource generalPropertyValueConverter}, ConverterParameter=System.Devices.Aep.DeviceAddress}" 
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="IsPaired:" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Path=IsPaired}"/>
+                            <TextBlock Text="IsConnected:" Margin="30,0,5,0"/>
+                            <TextBlock Text="{Binding Path=Properties, Converter={StaticResource generalPropertyValueConverter}, ConverterParameter=System.Devices.Aep.IsConnected}" 
+                                       TextWrapping="Wrap" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="RootGrid" Margin="12,20,12,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,10">
+                
+            </StackPanel>
+            <ScrollViewer Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <ScrollViewer Grid.Row="0" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,15,0">
+                            <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap">
+                                    Enumerates all Bluetooth LE devices that are discoverable to Windows and connects to the selected one.
+                            </TextBlock>
+                            <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="60">
+                                <Button x:Name="StartWatcherButton" HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch"
+                                        Content="Start Watcher" 
+                                        Margin="1" 
+                                        VariableSizedWrapGrid.ColumnSpan="2" 
+                                        Click="StartWatcherButton_Click"/>
+                                <Button x:Name="StopWatcherButton" HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch"
+                                        Content="Stop Watcher" 
+                                        Margin="1" 
+                                        VariableSizedWrapGrid.ColumnSpan="2" 
+                                        Click="StopWatcherButton_Click"
+                                        IsEnabled="False"/>
+                                <Button x:Name="PairButton"
+                                        Content="Pair Selected Device"
+                                        Margin="1"
+                                        IsEnabled="False"
+                                        Click="PairButton_Click"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        VariableSizedWrapGrid.ColumnSpan="3"/>
+                                <Button x:Name="UnpairButton"
+                                        Content="Unpair Selected Device"
+                                        Margin="1"
+                                        IsEnabled="False"
+                                        Click="UnpairButton_Click"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        VariableSizedWrapGrid.ColumnSpan="3"/>
+                            </VariableSizedWrapGrid>
+                            <TextBlock Text="Device Control:" Margin="0,5,5,0"/>
+                            <VariableSizedWrapGrid Orientation="Horizontal" ItemWidth="60">
+                                <Button x:Name="ForwardButton" 
+                                        HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch"
+                                        Content="Forward" 
+                                        Margin="1" 
+                                        VariableSizedWrapGrid.ColumnSpan="2" 
+                                        Click="ForwardButton_Click"
+                                        IsEnabled="False"/>
+                                <Button x:Name="StopButton" 
+                                        HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch"
+                                        Content="Stop" 
+                                        Margin="1" 
+                                        VariableSizedWrapGrid.ColumnSpan="2" 
+                                        Click="StopButton_Click"
+                                        IsEnabled="False"/>
+                                <Button x:Name="BackwardButton" 
+                                        HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch"
+                                        Content="Backward" 
+                                        Margin="1" 
+                                        VariableSizedWrapGrid.ColumnSpan="2" 
+                                        Click="BackwardButton_Click"
+                                        IsEnabled="False"/>
+                            </VariableSizedWrapGrid>
+                            <Border BorderBrush="AntiqueWhite" BorderThickness="1">
+                                <ListView x:Name="resultsListView"
+                                          Visibility="Visible"
+                                      ItemTemplate="{StaticResource ResultsListViewTemplate}"
+                                      ItemsSource="{Binding Path=ResultCollection}"
+                                      SelectionChanged="ResultsListView_SelectionChanged"
+                                      MaxHeight="450"/>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Status Block for providing messages to the user.  Use the
+             NotifyUser() method to populate the message -->
+            <Border x:Name="ErrorBorder" Background="Red" Grid.Row="2"/>
+            <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
+        </Grid>
+    </Grid>
+</Page>
