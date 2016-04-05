@@ -4,8 +4,8 @@
 
 The next steps depend on whether you just want to deploy the sample or you want to both deploy and run it.
 
-i. BtAvatar should be deployed on a PC or larger screen device
-ii. BtSensor should be deployed on a phone that supports activity detection (currently only the Lumia 950 and 950 XL)
+- BtAvatar should be deployed on a PC or larger screen device
+- BtSensor should be deployed on a phone that supports activity detection (currently only the Lumia 950 and 950 XL)
 
 ### Deploying the sample
 
