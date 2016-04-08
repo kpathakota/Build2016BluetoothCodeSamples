@@ -80,7 +80,7 @@ namespace BackgroundTasks
                     // the Error status is not Success since advertisements are stored until this task is triggered
                     IReadOnlyList<BluetoothLEAdvertisementReceivedEventArgs> advertisements = details.Advertisements;
 
-                    // The signal strength filter configuration of the trigger is returned such that further 
+                    // The signal strength filter configuration of the trigger is returned such that further
                     // processing can be performed here using these values if necessary. They are read-only here.
                     var rssiFilter = details.SignalStrengthFilter;
 
