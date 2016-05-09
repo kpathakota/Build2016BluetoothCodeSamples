@@ -1,5 +1,5 @@
 # Bluetooth Beyond Beacons
-Code sample for Bluetooth Beyond Beacon
+Code sample for Bluetooth Beyond Beacon: https://channel9.msdn.com/events/Build/2016/P416
 
 ## Run the sample
 
